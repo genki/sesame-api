@@ -25,7 +25,7 @@ Or install it yourself as:
 
 ```ruby
 sesame = SesameAPI.new 'sesame ID', 'API token'
-sesame.status #=> Net::HTTPResponse
+sesame.status #=> Net::HTTPResponse. Result is in its.body :)
 sesame.lock   #=> Lock Sesame
 sesame.unlock #=> Unlock Sesame
 ```
