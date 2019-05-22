@@ -4,8 +4,7 @@ class SesameAPI
   ENDPOINT = URI('https://api.candyhouse.co/public/sesame/')
 
   def initialize(sesame_id, token)
-    @id = sesame_id
-    @path = ENDPOINT.path + @id
+    @path = ENDPOINT.path + sesame_id
     @opts = {authorization:token, contentType:'application/json'}
     @client = Net::HTTP.new ENDPOINT.host, ENDPOINT.port
     @client.use_ssl = true
