@@ -1,6 +1,7 @@
 require 'net/https'
 
 class SesameAPI
+  VERSION = '0.1.0'
   ENDPOINT = URI('https://api.candyhouse.co/public/sesame/')
 
   def initialize(sesame_id, token)
