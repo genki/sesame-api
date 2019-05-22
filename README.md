@@ -23,11 +23,11 @@ Or install it yourself as:
 
 ## Usage
 
-```
+```ruby
 sesame = SesameAPI.new 'sesame ID', 'API token'
 sesame.status #=> Net::HTTPResponse
 sesame.lock   #=> Lock Sesame
-sesame.unlock   #=> Unlock Sesame
+sesame.unlock #=> Unlock Sesame
 ```
 
 ## Development
