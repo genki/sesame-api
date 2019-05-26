@@ -6,7 +6,7 @@ class SesameAPI
 
   def initialize(sesame_id, token)
     @path = ENDPOINT.path + sesame_id
-    @opts = {authorization:token, contentType:'application/json'}
+    @opts = {'Authorization' => token, 'Content-Type' => 'application/json'}
     @client = Net::HTTP.new ENDPOINT.host, ENDPOINT.port
     @client.use_ssl = true
     @client.verify_mode = OpenSSL::SSL::VERIFY_PEER
@@ -14,14 +14,18 @@ class SesameAPI
   end
 
   def lock
-    @client.start{@client.post @path, 'lock', @opts}
+    req = Net::HTTP::Post.new @path, @opts
+    req.body = '{"command":"lock"}'
+    @client.request req
   end
 
   def unlock
-    @client.start{@client.post @path, 'unlock', @opts}
+    req = Net::HTTP::Post.new @path, @opts
+    req.body = '{"command":"unlock"}'
+    @client.request req
   end
 
   def status
-    @client.start{@client.get @path, @opts}
+    @client.request Net::HTTP::Get.new @path, @opts
   end
 end
